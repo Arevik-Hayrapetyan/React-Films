@@ -13,11 +13,22 @@ import Favorite from "./components/Favorite";
 import Login from "./components/Login";
 import Movies from "./components/Movies/Movies";
 import Search from "./components/Search";
+import { makeStyles } from "@material-ui/core/styles";
 
+
+// const useStyles = makeStyles({
+  
+//   '@global':{
+//     body:{
+//       backgroundColor:"#dd33fa"
+//     }
+// },
+// });
 
 function App() {
+  
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <LabelBottomNavigation/>
     <div className="App" display="flex">
     <Container>

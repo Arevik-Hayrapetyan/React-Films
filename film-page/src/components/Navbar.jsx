@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
+
   root: {
     width: "100%",
     backgroundColor: "#dd33fa",
