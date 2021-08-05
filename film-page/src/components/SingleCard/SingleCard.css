@@ -1,0 +1,23 @@
+.media{
+    display:"flex";
+    flex-direction:"column";
+    padding:5px;
+    margin:5px 0;
+    background-color: rgb(132, 132, 240);
+    border-radius: 10px;
+    position:relative
+}
+
+
+
+.media:hover{
+    background-color: rgb(170, 223, 218);
+    
+}
+
+@media(max-width:500px){
+    .media{
+        width:50%
+    }
+}
+

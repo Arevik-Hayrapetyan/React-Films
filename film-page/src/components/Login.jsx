@@ -6,14 +6,14 @@ import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { setItems, getItems } from "..//helpers/localStorage";
-import { isValidName, isValidPassword } from "../helpers/validation";
-import { Redirect } from "react-router-dom";
-import { Routes } from "../constants/routes";
+import { testName, testPassword } from "../helpers/validation";
 
-const useStyles = (theme) => ({
+import { useState } from "react";
+
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -31,122 +31,111 @@ const useStyles = (theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-});
+}));
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: null,
-      name: "",
-      password: "",
-      isValidName: false,
-      isValidPassword: false,
-      isValidLogin: false,
-      nameError: "",
-      passwordError: "",
-      errorMessage: "",
-      namePasswords: getItems() === null ? [] : getItems(),
-    };
-  }
+function Login() {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValidName, setisValidName] = useState(false);
+  const [isValidPassword, setisValidPassword] = useState(false);
+  const [isValidLogin, setisValidLogin] = useState(false);
+  const [nameError, setnameError] = useState("");
+  const [passwordError, setpasswordError] = useState("");
+  const [errorMessage, seterrorMessage] = useState("");
+  const [namePasswords, setnamePasswords] = useState("");
 
-  handleName = (event) => {
-    this.setState({ name: event.target.value });
-    const isValid = isValidName(this.state.name);
+  function handleName(event) {
+    console.log("Elfond");
+    setName(event.target.value);
+    const isValid = testName(name);
 
     if (isValid) {
-      this.setState({ isValidName: true });
-      this.setState({ nameError: "" });
+      setisValidName(true);
+      setnameError("");
     } else {
-      this.setState({ isValidName: false });
-      this.setState({ nameError: "Wrong name" });
+      setisValidName(false);
+      setnameError("Wrong name");
     }
-  };
-
-  handlePassword = (event) => {
-    this.setState({ password: event.target.value });
-    const isValid = isValidPassword(this.state.password);
-    if (isValid) {
-      this.setState({ isValidPassword: true });
-      this.setState({ passwordError: "" });
-    } else {
-      this.setState({ isValidPassword: false });
-      this.setState({ passwordError: "Wrong password" });
-    }
-  };
-
-  handleLogin = () => {
-    const isValidName = this.state.isValidName;
-    const isValidPassword = this.state.isValidPassword;
-
-    if (isValidName && isValidPassword) {
-      this.setState({ isValidLogin: true });
-      this.setState({ errorMessage: "Congrats you are Login successfully" });
-    } else {
-      this.setState({ errorMessage: "Please try again" });
-    }
-   setItems("name", this.state.name)
-    
-  };
-
- 
-
-  
-  render() {
-    // if (this.state.isValidLogin) {
-    //   return <Redirect to={Routes.create_post().path} />;
-    // }
-
-    const { classes } = this.props;
-    return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
-
-          <TextField
-            onChange={this.handleName}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="name"
-            label="Name"
-            name="name"
-            autoFocus
-          />
-          <span style={{ color: "red" }}>{this.state.nameError}</span>
-          <TextField
-            onChange={this.handlePassword}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-          />
-          <span style={{ color: "red" }}>{this.state.passwordError}</span>
-
-          <Button
-            onClick={this.handleLogin}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Log In
-          </Button>
-          <span style={{ color: "blue" }}>{this.state.errorMessage}</span>
-        </div>
-        <Box mt={8}></Box>
-      </Container>
-    );
   }
+
+  function handlePassword(event) {
+    setPassword(event.target.value);
+    const isValid = testPassword(password);
+    if (isValid) {
+      setisValidPassword(true);
+      setpasswordError("")
+    } else {
+      setisValidPassword(false );
+      setpasswordError("Wrong password")
+    }
+  }
+
+  function handleLogin(event) {
+    const validName = isValidName;
+    const ValidPassword = isValidPassword;
+
+    if (validName && ValidPassword) {
+      setisValidLogin(!isValidLogin)
+      seterrorMessage("Congrats you are Login successfully" );
+    } else {
+      seterrorMessage("Please try again");
+    }
+  }
+
+  // if (this.state.isValidLogin) {
+  //   return <Redirect to={Routes.create_post().path} />;
+  // }
+
+  const classes = useStyles();
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Log in
+        </Typography>
+
+        <TextField
+          onChange={handleName}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          id="name"
+          label="Name"
+          name="name"
+          autoFocus
+        />
+        <span style={{ color: "red" }}>{nameError}</span>
+        <TextField
+          onChange={handlePassword}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+        />
+        <span style={{ color: "red" }}>{passwordError}</span>
+
+        <Button
+          onClick={handleLogin}
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Log In
+        </Button>
+        <span style={{ color: "blue" }}>{errorMessage}</span>
+      </div>
+      <Box mt={8}></Box>
+    </Container>
+  );
 }
-export default withStyles(useStyles)(Login);
+
+export default Login;
