@@ -11,7 +11,6 @@ export default function Movies() {
 
   useEffect(() => {
     MoviesData().then((data) => {
-        console.log(111)
         console.log(data)
         setInfo(data);
       });
@@ -19,6 +18,8 @@ export default function Movies() {
 
   console.log(info)
   return (
+     <div className="movies">
+    <span className="movie-title">Suggested movies</span>
     <div className="movie-wrapper">
       {info &&
         info.map((item) => (
@@ -31,6 +32,7 @@ export default function Movies() {
             title={item.title}
           />
         ))}
+    </div>
     </div>
   );
 }

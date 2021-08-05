@@ -8,12 +8,14 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
+import "../Navbar/Navbar.css"
 
 const useStyles = makeStyles({
-
   root: {
     width: "100%",
     backgroundColor: "#dd33fa",
+    position: "fixed",
+    zIndex: 100,
   },
   textColor: {
     color: "white",
@@ -28,8 +30,6 @@ export default function LabelBottomNavigation() {
     setValue(newValue);
   };
 
- 
-
   useEffect(() => {
     if (value === "movies") history.push("/");
     if (value === "favorites") history.push("/favorites");
@@ -38,6 +38,7 @@ export default function LabelBottomNavigation() {
   }, [value]);
 
   return (
+    <div onClick={() => window.scroll(0, 0)}>
     <BottomNavigation
       value={value}
       onChange={handleChange}
@@ -70,5 +71,6 @@ export default function LabelBottomNavigation() {
         icon={<SearchIcon />}
       />
     </BottomNavigation>
+    </div>
   );
 }

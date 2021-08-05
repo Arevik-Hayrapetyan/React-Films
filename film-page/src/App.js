@@ -1,6 +1,6 @@
   
 import "./App.css";
-import LabelBottomNavigation from "./components/Navbar";
+import LabelBottomNavigation from "./components/Navbar/Navbar";
 import {
   BrowserRouter,
   Switch,
