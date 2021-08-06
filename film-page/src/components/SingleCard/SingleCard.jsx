@@ -1,6 +1,6 @@
 import React from "react";
 import "../SingleCard/SingleCard.css";
-// styles from 
+
 
 const SingleCard = ({ id, poster_path, title, release_date, vote_count }) => {
   return (
