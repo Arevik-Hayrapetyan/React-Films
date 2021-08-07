@@ -2,7 +2,8 @@ import MoviesData from "../../data/data";
 import { useEffect, useState, useRef } from "react";
 import SingleCard from "../SingleCard/SingleCard";
 import "../Movies/Movies.css";
-import loading from "../../assets/images/loading.gif";
+import loadingImg from "../../assets/images/loading.gif";
+import Button from "@material-ui/core/Button";
 
 export default function Movies() {
   // if (!this.state.isValidLogin) {
@@ -56,12 +57,15 @@ export default function Movies() {
             />
           ))}
         <div className="loading">
-          <img className="loadingImg" src={loading} alt="loading" />
-          <div className="button">
-            <button onClick={loadMore} ref={pageEnd}>
-              Load more
-            </button>
-          </div>
+          <img src={loadingImg} className="loadingImg" alt="loading" />
+          <Button
+            onClick={loadMore}
+            ref={pageEnd}
+            variant="contained"
+            color="primary"
+          >
+            Load more
+          </Button>
         </div>
       </div>
     </div>
