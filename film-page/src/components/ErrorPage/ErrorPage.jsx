@@ -1,4 +1,4 @@
-import errorImage from "../assets/images/errorPage.jpg";
+import errorImage from "../../assets/images/errorPage.jpg";
 
 function ErrorPage() {
   

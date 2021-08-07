@@ -8,11 +8,11 @@ import {
   
 } from "react-router-dom";
 import Container from '@material-ui/core/Container'
-import ErrorPage from "./components/ErrorPage";
-import Favorite from "./components/Favorite";
-import Login from "./components/Login";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Favorite from "./components/Favorite/Favorite";
+import Login from "./components/Login/Login";
 import Movies from "./components/Movies/Movies";
-import Search from "./components/Search";
+import Search from "./components/Search/Search";
 import { makeStyles } from "@material-ui/core/styles";
 
 

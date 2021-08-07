@@ -1,7 +1,7 @@
 export default async function SearchData(pageNumber) {
   return await fetch(
     `
-      https://api.themoviedb.org/3/search/company?api_key=44a241f7d782bbeccc5377583f163cd9&page=${pageNumber}`
+      https://api.themoviedb.org/3/search/company?api_key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}`
   )
     .then((response) => {
       return response.json();
