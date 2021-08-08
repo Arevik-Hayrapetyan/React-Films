@@ -17,7 +17,6 @@ export default function Movies() {
 
   useEffect(() => {
     MoviesData(pageNumber).then((data) => {
-      console.log(data);
       setInfo((prev) => [...prev, ...data]);
     });
     setLoading(true);

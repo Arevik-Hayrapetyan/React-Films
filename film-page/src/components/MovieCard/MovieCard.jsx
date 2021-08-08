@@ -40,12 +40,13 @@ export default function MediaCard() {
             <img
               src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
               alt="Movie"
+              key={item.id}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h5" component="h2" key={item.id}>
                 {item.title}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="textSecondary" component="p" key={item.id}>
                 {item.overview}
               </Typography>
             </CardContent>
