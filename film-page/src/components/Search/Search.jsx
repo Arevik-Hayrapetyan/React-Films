@@ -17,7 +17,6 @@ export default function Search() {
   useEffect(() => {
     SearchData(searchMovie).then((data) => {
       setInfo(data.results);
-      console.log(data.results);
     });
   }, [searchMovie]);
 
@@ -47,6 +46,11 @@ export default function Search() {
               title={item.title || item.name}
             />
           ))}
+        {
+          <Button variant="contained" color="primary">
+            Save
+          </Button>
+        }
       </div>
     </div>
   );

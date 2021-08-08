@@ -7,7 +7,6 @@ export default async function SearchData(searchMovie) {
       return response.json();
     })
     .then((data) => {
-      // console.log(data.results)
-      return data
+      return data;
     });
 }

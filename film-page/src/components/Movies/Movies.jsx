@@ -4,6 +4,8 @@ import SingleCard from "../SingleCard/SingleCard";
 import "../Movies/Movies.css";
 import loadingImg from "../../assets/images/loading.gif";
 import Button from "@material-ui/core/Button";
+import { Redirect, useHistory } from "react-router-dom";
+import { setItems, getItems } from "../../helpers/localStorage";
 
 export default function Movies() {
   // if (!this.state.isValidLogin) {
@@ -12,6 +14,7 @@ export default function Movies() {
   const [info, setInfo] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     MoviesData(pageNumber).then((data) => {
@@ -40,6 +43,14 @@ export default function Movies() {
       observer.observe(pageEnd.current);
     }
   });
+  let history = useHistory();
+
+  const handleMovie = (id, title, poster_path, overview) => (ev) => {
+    setItems("movie", [...movie, { id, title, poster_path, overview }]);
+    setMovie([...movie, { id, title, poster_path, overview }]);
+    ev.stopPropagation();
+    history.push(`/movie/${id}`);
+  };
 
   return (
     <div className="movies">
@@ -47,14 +58,23 @@ export default function Movies() {
       <div className="movie-wrapper">
         {info &&
           info.map((item) => (
-            <SingleCard
-              key={item.id}
-              id={item.id}
-              poster_path={item.poster_path}
-              release_date={item.release_date}
-              vote_count={item.vote_count}
-              title={item.title}
-            />
+            <div
+              onClick={handleMovie(
+                item.id,
+                item.title,
+                item.poster_path,
+                item.overview
+              )}
+            >
+              <SingleCard
+                key={item.id}
+                id={item.id}
+                poster_path={item.poster_path}
+                release_date={item.release_date}
+                vote_count={item.vote_count}
+                title={item.title}
+              />
+            </div>
           ))}
         <div className="loading">
           <img src={loadingImg} className="loadingImg" alt="loading" />

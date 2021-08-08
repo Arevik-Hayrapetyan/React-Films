@@ -8,7 +8,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
-import "../Navbar/Navbar.css"
+import "../Navbar/Navbar.css";
 
 const useStyles = makeStyles({
   root: {
@@ -31,7 +31,9 @@ export default function LabelBottomNavigation() {
   };
 
   useEffect(() => {
-    if (value === "movies") history.push("/");
+    let id = ":movieId";
+    if (value === id) history.push(`/movie/${id}`);
+    if (value === "movies") history.push("/movies");
     if (value === "favorites") history.push("/favorites");
     if (value === "login") history.push("/login");
     if (value === "search") history.push("/search");
@@ -39,38 +41,38 @@ export default function LabelBottomNavigation() {
 
   return (
     <div onClick={() => window.scroll(0, 0)}>
-    <BottomNavigation
-      value={value}
-      onChange={handleChange}
-      className={classes.root}
-    >
-      <BottomNavigationAction
-        label="Movies"
-        value="movies"
-        className={classes.textColor}
-        icon={<MovieIcon />}
-      />
-      <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        className={classes.textColor}
-        icon={<FavoriteIcon />}
-      />
+      <BottomNavigation
+        value={value}
+        onChange={handleChange}
+        className={classes.root}
+      >
+        <BottomNavigationAction
+          label="Movies"
+          value="movies"
+          className={classes.textColor}
+          icon={<MovieIcon />}
+        />
+        <BottomNavigationAction
+          label="Favorites"
+          value="favorites"
+          className={classes.textColor}
+          icon={<FavoriteIcon />}
+        />
 
-      <BottomNavigationAction
-        label="Login"
-        value="login"
-        className={classes.textColor}
-        icon={<LockOpenIcon />}
-      />
+        <BottomNavigationAction
+          label="Login"
+          value="login"
+          className={classes.textColor}
+          icon={<LockOpenIcon />}
+        />
 
-      <BottomNavigationAction
-        label="Search"
-        value="search"
-        className={classes.textColor}
-        icon={<SearchIcon />}
-      />
-    </BottomNavigation>
+        <BottomNavigationAction
+          label="Search"
+          value="search"
+          className={classes.textColor}
+          icon={<SearchIcon />}
+        />
+      </BottomNavigation>
     </div>
   );
 }
