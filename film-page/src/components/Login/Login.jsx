@@ -44,8 +44,8 @@ function Login() {
   const [namePasswords, setnamePasswords] = useState("");
 
   function handleName(event) {
-    console.log("Elfond");
     setName(event.target.value);
+    setItems("currrentUser", event.target.value);
     const isValid = testName(name);
 
     if (isValid) {
@@ -62,10 +62,10 @@ function Login() {
     const isValid = testPassword(password);
     if (isValid) {
       setisValidPassword(true);
-      setpasswordError("")
+      setpasswordError("");
     } else {
-      setisValidPassword(false );
-      setpasswordError("Wrong password")
+      setisValidPassword(false);
+      setpasswordError("Wrong password");
     }
   }
 
@@ -74,8 +74,9 @@ function Login() {
     const ValidPassword = isValidPassword;
 
     if (validName && ValidPassword) {
-      setisValidLogin(!isValidLogin)
-      seterrorMessage("Congrats you are Login successfully" );
+      setisValidLogin(!isValidLogin);
+      seterrorMessage("Congrats you are Login successfully");
+      setItems("isLogin", true);
     } else {
       seterrorMessage("Please try again");
     }

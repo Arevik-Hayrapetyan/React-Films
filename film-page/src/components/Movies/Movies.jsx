@@ -8,13 +8,12 @@ import { Redirect, useHistory } from "react-router-dom";
 import { setItems, getItems } from "../../helpers/localStorage";
 
 export default function Movies() {
-  // if (!this.state.isValidLogin) {
-  //     return <Redirect to={Routes.login().path} />;
-  //   }
+
   const [info, setInfo] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState([]);
+  const [isLogin] = useState(getItems("isLogin"));
 
   useEffect(() => {
     MoviesData(pageNumber).then((data) => {
@@ -52,7 +51,7 @@ export default function Movies() {
     history.push(`/movie/${id}`);
   };
 
-  return (
+  return isLogin? (
     <div className="movies">
       <span className="movie-title">Suggested movies</span>
       <div className="movie-wrapper">
@@ -89,5 +88,5 @@ export default function Movies() {
         </div>
       </div>
     </div>
-  );
+  ):(<Redirect to="/login" />)
 }

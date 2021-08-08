@@ -6,13 +6,13 @@ import "../Search/Search.css";
 import SingleCard from "../SingleCard/SingleCard";
 import { useEffect, useState } from "react";
 import SearchData from "../../data/searchData";
+import { setItems, getItems } from "../../helpers/localStorage";
+import { Redirect } from "react-router-dom";
 
 export default function Search() {
-  // if (!this.state.isValidLogin) {
-  //     return <Redirect to={Routes.login().path} />;
-  //   }
   const [searchMovie, setSearchMovie] = useState("");
   const [info, setInfo] = useState([]);
+  const [isLogin] = useState(getItems("isLogin"));
 
   useEffect(() => {
     SearchData(searchMovie).then((data) => {
@@ -20,7 +20,7 @@ export default function Search() {
     });
   }, [searchMovie]);
 
-  return (
+  return isLogin ? (
     <div>
       <div>Search Movies</div>
       <div className="search">
@@ -46,12 +46,9 @@ export default function Search() {
               title={item.title || item.name}
             />
           ))}
-        {
-          <Button variant="contained" color="primary">
-            Save
-          </Button>
-        }
       </div>
     </div>
+  ) : (
+    <Redirect to="/login" />
   );
 }

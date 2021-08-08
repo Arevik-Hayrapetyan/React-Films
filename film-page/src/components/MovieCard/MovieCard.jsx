@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     padding: "100px",
     marginRight: "50%",
     maxWidth: 200,
-    paddingTop:0
+    paddingTop: 0,
   },
   media: {
     height: 100,
@@ -25,13 +25,23 @@ const useStyles = makeStyles({
 export default function MediaCard() {
   const classes = useStyles();
   const [movie] = useState(getItems("movie"));
-  return (
-    <div style={{height:"50px"}}>
+  const [favorite, setFavorite] = useState([]);
+
+  const handleFavorite = (id, title, poster_path, overview) => (ev) => {
+    setItems("favorite", [...favorite, { id, title, poster_path, overview }]);
+    setFavorite([...favorite, { id, title, poster_path, overview }]);
+  };
+
+  return  (
+    <div style={{ height: "50px" }}>
       {movie.map((item) => (
         <Card className={classes.root}>
           <CardActionArea>
-            <CardMedia className={classes.media}  />
-            <img src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} alt="Movie"/>
+            <CardMedia className={classes.media} />
+            <img
+              src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+              alt="Movie"
+            />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {item.title}
@@ -42,12 +52,21 @@ export default function MediaCard() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              color="primary"
+              onClick={handleFavorite(
+                item.id,
+                item.title,
+                item.poster_path,
+                item.overview
+              )}
+            >
               Save
             </Button>
           </CardActions>
         </Card>
       ))}
     </div>
-  );
+  )
 }
