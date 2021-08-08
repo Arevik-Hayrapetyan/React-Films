@@ -13,7 +13,6 @@ import { useEffect, useState, useRef } from "react";
 const useStyles = makeStyles({
   root: {
     padding: "100px",
-    marginRight: "50%",
     maxWidth: 200,
     paddingTop: 0,
   },
