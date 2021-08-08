@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { setItems, getItems } from "../../helpers/localStorage";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   root: {
@@ -31,7 +31,7 @@ export default function MediaCard() {
     setFavorite([...favorite, { id, title, poster_path, overview }]);
   };
 
-  return  (
+  return (
     <div style={{ height: "50px" }}>
       {movie.map((item) => (
         <Card className={classes.root}>
@@ -43,10 +43,20 @@ export default function MediaCard() {
               key={item.id}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" key={item.id}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                key={item.id}
+              >
                 {item.title}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p" key={item.id}>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                key={item.id}
+              >
                 {item.overview}
               </Typography>
             </CardContent>
@@ -68,5 +78,5 @@ export default function MediaCard() {
         </Card>
       ))}
     </div>
-  )
+  );
 }

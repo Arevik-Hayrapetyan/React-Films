@@ -7,9 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { setItems, getItems } from "../../helpers/localStorage";
-import { useEffect, useState, useRef } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { getItems } from "../../helpers/localStorage";
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -42,10 +42,20 @@ export default function Favorite() {
               key={item.id}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" key={item.id}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                key={item.id}
+              >
                 {item.title}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p" key={item.id}>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                key={item.id}
+              >
                 {item.overview}
               </Typography>
             </CardContent>

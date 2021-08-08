@@ -8,7 +8,6 @@ import Login from "./components/Login/Login";
 import Movies from "./components/Movies/Movies";
 import Movie from "./components/MovieCard/MovieCard";
 import Search from "./components/Search/Search";
-import { makeStyles } from "@material-ui/core/styles";
 
 function App() {
   return (

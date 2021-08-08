@@ -37,7 +37,7 @@ export default function LabelBottomNavigation() {
     if (value === "favorites") history.push("/favorites");
     if (value === "login") history.push("/login");
     if (value === "search") history.push("/search");
-  }, [value]);
+  });
 
   return (
     <div onClick={() => window.scroll(0, 0)}>

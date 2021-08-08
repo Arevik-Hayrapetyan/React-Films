@@ -6,7 +6,7 @@ import "../Search/Search.css";
 import SingleCard from "../SingleCard/SingleCard";
 import { useEffect, useState } from "react";
 import SearchData from "../../data/searchData";
-import { setItems, getItems } from "../../helpers/localStorage";
+import { getItems } from "../../helpers/localStorage";
 import { Redirect } from "react-router-dom";
 
 export default function Search() {
