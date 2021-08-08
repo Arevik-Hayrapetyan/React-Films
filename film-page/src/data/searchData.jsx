@@ -1,13 +1,13 @@
-export default async function SearchData(pageNumber) {
+export default async function SearchData(searchMovie) {
   return await fetch(
     `
-      https://api.themoviedb.org/3/search/company?api_key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}`
+      https://api.themoviedb.org/3/search/movie?api_key=44a241f7d782bbeccc5377583f163cd9&&query=${searchMovie}`
   )
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data.results);
-      return data.results;
+      // console.log(data.results)
+      return data
     });
 }

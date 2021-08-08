@@ -4,32 +4,22 @@ import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import "../Search/Search.css";
 import SingleCard from "../SingleCard/SingleCard";
-import { useEffect, useState, useRef } from "react";
-import SearchData from "../../data/searchData"
-import loadingImg from "../../assets/images/loading.gif";
+import { useEffect, useState } from "react";
+import SearchData from "../../data/searchData";
 
 export default function Search() {
   // if (!this.state.isValidLogin) {
   //     return <Redirect to={Routes.login().path} />;
   //   }
-  const [searchMovie, setSearchMovie] = useState();
+  const [searchMovie, setSearchMovie] = useState("");
   const [info, setInfo] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    SearchData(pageNumber).then((data) => {
-      console.log(data);
-      setInfo((prev) => [...prev, ...data]);
+    SearchData(searchMovie).then((data) => {
+      setInfo(data.results);
+      console.log(data.results);
     });
-    
-  }, [pageNumber]);
-
-  function loadMore() {
-    setPageNumber((prevPage) => prevPage + 1);
-  }
-
-
-
+  }, [searchMovie]);
 
   return (
     <div>
@@ -41,7 +31,7 @@ export default function Search() {
           variant="filled"
           onChange={(event) => setSearchMovie(event.target.value)}
         />
-        <Button>
+        <Button onClick={SearchData}>
           <SearchIcon />
         </Button>
       </div>
@@ -54,25 +44,10 @@ export default function Search() {
               poster_path={item.poster_path}
               release_date={item.release_date}
               vote_count={item.vote_count}
-              title={item.title}
+              title={item.title || item.name}
             />
-            
-          ))
-          }
-          <div className="loading">
-          <img src={loadingImg} className="loadingImg" alt="loading" />
-          <Button
-            onClick={loadMore}
-            
-            variant="contained"
-            color="primary"
-          >
-            Load more
-          </Button>
-        </div>
-          </div>
-          </div>
-   
+          ))}
+      </div>
+    </div>
   );
-
 }

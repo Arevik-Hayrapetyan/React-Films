@@ -7,7 +7,8 @@ export default async function MoviesData(pageNumber) {
       return response.json();
     })
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       return data.results;
     });
 }
+
