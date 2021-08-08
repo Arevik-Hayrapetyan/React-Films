@@ -33,7 +33,7 @@ export default function LabelBottomNavigation() {
   useEffect(() => {
     let id = ":movieId";
     if (value === id) history.push(`/movie/${id}`);
-    if (value === "movies") history.push("/movies");
+    if (value === "movies") history.push("/");
     if (value === "favorites") history.push("/favorites");
     if (value === "login") history.push("/login");
     if (value === "search") history.push("/search");

@@ -16,7 +16,7 @@ function App() {
       <div className="App" display="flex">
         <Container>
           <Switch>
-            <Route exact path="/movies" component={Movies} />
+            <Route exact path="/" component={Movies} />
             <Route path={`/movie/:movieId`} component={Movie} />
             <Route path="/favorites" component={Favorite} />
             <Route path="/login" component={Login} />
