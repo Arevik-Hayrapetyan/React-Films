@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -8,10 +9,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { setItems} from "../../helpers/localStorage";
+import { setItems } from "../../helpers/localStorage";
 import { testName, testPassword } from "../../helpers/validation";
-
-import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -19,14 +18,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
+
   form: {
     width: "100%",
     marginTop: theme.spacing(1),
   },
+
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -41,7 +43,6 @@ function Login() {
   const [nameError, setnameError] = useState("");
   const [passwordError, setpasswordError] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
- 
 
   function handleName(event) {
     setName(event.target.value);
@@ -60,6 +61,7 @@ function Login() {
   function handlePassword(event) {
     setPassword(event.target.value);
     const isValid = testPassword(password);
+
     if (isValid) {
       setisValidPassword(true);
       setpasswordError("");
@@ -82,8 +84,8 @@ function Login() {
     }
   }
 
-
   const classes = useStyles();
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -106,6 +108,7 @@ function Login() {
           autoFocus
         />
         <span style={{ color: "red" }}>{nameError}</span>
+
         <TextField
           onChange={handlePassword}
           variant="outlined"

@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -6,8 +8,6 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import MovieIcon from "@material-ui/icons/Movie";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SearchIcon from "@material-ui/icons/Search";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
 import "../Navbar/Navbar.css";
 
 const useStyles = makeStyles({
@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     position: "fixed",
     zIndex: 100,
   },
+
   textColor: {
     color: "white",
   },
@@ -52,6 +53,7 @@ export default function LabelBottomNavigation() {
           className={classes.textColor}
           icon={<MovieIcon />}
         />
+
         <BottomNavigationAction
           label="Favorites"
           value="favorites"

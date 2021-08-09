@@ -11,4 +11,3 @@ export default async function MoviesData(pageNumber) {
       return data.results;
     });
 }
-

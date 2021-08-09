@@ -1,7 +1,7 @@
 import "./App.css";
-import LabelBottomNavigation from "./components/Navbar/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Container from "@material-ui/core/Container";
+import LabelBottomNavigation from "./components/Navbar/Navbar";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Favorite from "./components/Favorite/Favorite";
 import Login from "./components/Login/Login";
@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <LabelBottomNavigation />
-      <div className="App" display="flex">
+      <div className="App">
         <Container>
           <Switch>
             <Route exact path="/" component={Movies} />

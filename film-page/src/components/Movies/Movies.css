@@ -1,17 +1,15 @@
-.movie-wrapper{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content:space-around;
-    background-color: rgb(204, 178, 228);
+.movie-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(204, 178, 228);
 }
 
-.loading{
-    align-items: center;
+.loading {
+  align-items: center;
 }
 
-.loadingImg{
-    width:50%;
-    height:30%;
-   
+.loadingImg {
+  width: 50%;
+  height: 30%;
 }
-

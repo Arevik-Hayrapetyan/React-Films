@@ -1,14 +1,13 @@
-import MoviesData from "../../data/data";
-import { useEffect, useState, useRef } from "react";
-import SingleCard from "../SingleCard/SingleCard";
-import "../Movies/Movies.css";
-import loadingImg from "../../assets/images/loading.gif";
-import Button from "@material-ui/core/Button";
 import { Redirect, useHistory } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import Button from "@material-ui/core/Button";
+import MoviesData from "../../data/data";
+import SingleCard from "../SingleCard/SingleCard";
+import loadingImg from "../../assets/images/loading.gif";
 import { setItems, getItems } from "../../helpers/localStorage";
+import "../Movies/Movies.css";
 
 export default function Movies() {
-
   const [info, setInfo] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -41,6 +40,7 @@ export default function Movies() {
       observer.observe(pageEnd.current);
     }
   });
+
   let history = useHistory();
 
   const handleMovie = (id, title, poster_path, overview) => (ev) => {
@@ -50,7 +50,7 @@ export default function Movies() {
     history.push(`/movie/${id}`);
   };
 
-  return isLogin? (
+  return isLogin ? (
     <div className="movies">
       <span className="movie-title">Suggested movies</span>
       <div className="movie-wrapper">
@@ -74,6 +74,7 @@ export default function Movies() {
               />
             </div>
           ))}
+
         <div className="loading">
           <img src={loadingImg} className="loadingImg" alt="loading" />
           <Button
@@ -87,5 +88,7 @@ export default function Movies() {
         </div>
       </div>
     </div>
-  ):(<Redirect to="/login" />)
+  ) : (
+    <Redirect to="/login" />
+  );
 }

@@ -1,13 +1,13 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import "../Search/Search.css";
 import SingleCard from "../SingleCard/SingleCard";
-import { useEffect, useState } from "react";
 import SearchData from "../../data/searchData";
 import { getItems } from "../../helpers/localStorage";
-import { Redirect } from "react-router-dom";
+import "../Search/Search.css";
 
 export default function Search() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -34,6 +34,7 @@ export default function Search() {
           <SearchIcon />
         </Button>
       </div>
+
       <div className="movie-wrapper">
         {info &&
           info.map((item) => (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,7 +10,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { getItems } from "../../helpers/localStorage";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     maxWidth: 200,
     paddingTop: 0,
   },
+
   media: {
     height: 100,
   },
